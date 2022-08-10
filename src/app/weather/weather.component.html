@@ -1,0 +1,78 @@
+<mat-card class="container">
+    <div class="row">
+        <div class="form-group col-md-4 col-xs-12">
+            <label>Select Country</label>
+            <select class="form-control" [(ngModel)]="selectedCountryID" (change)="onChangeCountry()">
+                <!-- <option  *ngIf="countryInfo == ''" value="-1"> --Select country-- </option> -->
+                <option *ngFor="let country of countryInfo; let i = index" value="{{i}}">{{country.CountryName}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-4 col-xs-12">
+            <label>Select State</label>
+            <select class="form-control" [(ngModel)]="selectedStateID" (change)="onChangeState()">
+                <!-- <option *ngIf="stateInfo == ''" value="-1"> --Select State-- </option> -->
+                <option *ngFor="let state of stateInfo; let j = index" value="{{j}}">{{state.StateName}}</option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-4 col-xs-12">
+            <label>Select City</label>
+            <select class="form-control" [(ngModel)]="selectedCityID">
+                <!-- <option *ngIf="cityInfo == ''" value="-1">--Select CIty--</option> -->
+                <option *ngFor="let city of cityInfo; let k = index" value="{{k}}">{{city}}</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="row add-btn">
+        <button [disabled]="selectedCityID < 0" type="submit" class="btn btn-danger"
+            (click)="addCity(this.selectedCityID)">
+            Add City
+        </button>
+    </div>
+</mat-card>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <!-- <div class="col-md-4">
+            <mat-card>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input class="col-md-12" type="text" [formControl]="locationControl">
+                    </div>
+                    <div class="col-md-4">
+                        <button [disabled]="locationControl.value.length < 1" type="submit" class="btn btn-success"
+                            (click)="addCity(this.cityName.indexOf(this.locationControl.value))">
+                            Search City
+                        </button>
+                    </div>
+                </div>
+            </mat-card>
+
+            <mat-card>
+                <h5>These are search details</h5>
+                <h5>These are search details</h5>
+                <h5>These are search details</h5>
+            </mat-card>
+        </div> -->
+
+        <div class="col-md-12">
+            <mat-card class="title-loc">
+                <h5>Your last location is: {{ location }}</h5>
+            </mat-card>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let item of cityName">
+                    <mat-card>
+                        <p>City: {{ item }}, {{ this.stateInfo[this.selectedStateID].StateName }}, {{
+                            this.countryInfo[this.selectedCountryID].CountryName }}</p>
+                        <p>Weather: {{ weather }} </p>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

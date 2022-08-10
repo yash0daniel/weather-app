@@ -1,0 +1,14 @@
+mat-card{
+    margin-bottom: 1%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-success{
+    margin-bottom: 1%;
+}
+
+.add-btn, .title-loc{
+    width: 40%;
+    margin: auto;
+    margin-bottom: 5px;
+}
